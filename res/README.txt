@@ -1,0 +1,1 @@
+Ordner für eingebundene Resourcen (werden mit einkompiliert)

@@ -1,0 +1,1 @@
+Ordner für Infos / Daten etc für das Projekt die aber nicht direkt direkt zum Projekt gehören (nicht deployed werden müssen)
