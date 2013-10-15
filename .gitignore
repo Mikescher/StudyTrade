@@ -14,7 +14,7 @@ build/
 *~.nib
 local.properties
 # .classpath
-.settings/
+#.settings/
 .loadpath
 
 # External tool builders
@@ -62,8 +62,6 @@ Desktop.ini
 ############
 ## Web Server
 ############
-
-.jsdtscope
 
 ############
 ## Other
