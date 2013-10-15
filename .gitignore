@@ -1,3 +1,38 @@
+#################
+## Eclipse
+#################
+
+*.pydevproject
+# .project
+.metadata
+bin/
+tmp/
+build/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+# .classpath
+# .settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+#################
+## JBOSS
+#################
+
 jboss/server/all/deploy/project.ext
 jboss/server/default/deploy/project.ext
 jboss/server/minimal/deploy/project.ext
@@ -13,3 +48,23 @@ jboss/server/minimal/log/*.log
 jboss/server/minimal/tmp/**/*
 jboss/server/minimal/data/**/*
 jboss/server/minimal/work/**/*
+
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+############
+## Web Server
+############
+
+.jsdtscope
+
+############
+## Other
+############
