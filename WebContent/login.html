@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script src="jquery-1.9.1.js" type="text/javascript"></script>
+<script src="jquery-ui-1.10.3.js" type="text/javascript"></script>
+
+<script>
+    function doBoxShake() {
+    	var s = $("#loginBox");
+    	s.effect("shake", { times:3 }, 500);
+    }
+</script>
+
+</head>
+<body id="loginbody">
+	<div id="loginBox">
+	   <h1 id="loginTitle">studyTrade</h1>
+		<form action="" method="get">
+			<input name="user" placeholder="Username" type="text" id="usernametextfield">
+			<br>
+			<input name="pass" placeholder="Password" type="password" id="passwordtextfield">
+			<br>
+			<input value="Log In" name="login" type="button" id="submitloginbutton" onclick="doBoxShake();">
+		</form>
+	</div>
+</body>
+</html>
