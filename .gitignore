@@ -67,4 +67,5 @@ Desktop.ini
 ## Other
 ############
 
-.gitignore # Temporary bcause of mac
+# Temporary bcause of mac
+.classpath
