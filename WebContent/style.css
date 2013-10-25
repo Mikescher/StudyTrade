@@ -28,6 +28,25 @@
 	padding-top : 10px;
 }
 
+#mainframeBox{
+	background: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	display: block;
+	width: 1024px;
+	height: 680px;
+	border-radius: 2px 2px 2px 2px;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	margin: auto;
+	padding: 20px;
+	padding-top : 10px;
+}
+
 #registerBox {
 	background: #fff;
 	position: absolute;
