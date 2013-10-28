@@ -2,14 +2,49 @@
 
 <html>
 <head>
+
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title>Registrierung</title>
 <link rel="stylesheet" type="text/css" href="style.css">
+
+<script type="text/javascript">
+function testekennwortqualitaet(inhalt)
+{
+	var check = inhalt;
+	var url = "http://localhost/kennworttesten.php?q=";
+	url = url + check;
+	
+if (check == "")
+{
+    document.getElementById("sicherheitshinweise").innerHTML="leer";
+    return;
+}
+else
+{
+	var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send();
+xmlhttp.onreadystatechange=function()
+{
+    if (xmlhttp.readyState==4 )
+    {
+        
+        document.getElementById("sicherheitshinweise").innerHTML=xmlhttp.responseText;
+        
+    }
+    else{document.getElementById("sicherheitshinweise").innerHTML=url;}
+    
+}
+
+}
+}
+</script>
 </head>
 <body id="body">
 	<div id="registerBox">
 	   <h1 id="loginTitle">studyTrade</h1>
-		<form action="./register.jsp" method="get">
+		<form action="./register.jsp" method="post">
 		
 			
 			<input name="vorname" placeholder="Vorname" type="text" id="usernametextfield"  >
@@ -33,7 +68,8 @@
 			<br>
 			<input name="email" placeholder="E-Mail" type="text" id="usernametextfield">
 			<br>
-			<input name="pass" placeholder="Password" type="password" id="passwordtextfield">
+			<input name="passwort_feld" type="text" placeholder="Passwort" value="" onchange="testekennwortqualitaet(this.value)" id="usernametextfield"/>
+			<div id="sicherheitshinweise">Hier kommt AJAX</div>
 			<br>
 			<input value="Registrierung" name="register" type="submit" id="button" >
 			<br>
