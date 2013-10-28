@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <script type="text/javascript">
-	function testekennwortqualitaet(inhalt) {
+	function checkpw(inhalt) {
 		var check = inhalt;
 		var url = "testpw.jsp?q=";
 		url = url + check;
@@ -36,8 +36,6 @@
 	<div id="registerBox">
 	   <h1 id="loginTitle">studyTrade</h1>
 		<form action="./register.jsp" method="post">
-		
-			
 			<input name="vorname" placeholder="Vorname" type="text" id="usernametextfield"  >
 			<br>
 			<input name="nachname" placeholder="Nachname" type="text" id="usernametextfield">
@@ -59,7 +57,7 @@
 			<br>
 			<input name="email" placeholder="E-Mail" type="text" id="usernametextfield">
 			<br>
-			<input name="passwort_feld" type="text" placeholder="Passwort" value="" onchange="testekennwortqualitaet(this.value)" id="usernametextfield"/>
+			<input name="passwort_feld" type="password" placeholder="Passwort" value="" oninput="checkpw(this.value)" id="usernametextfield"/>
 			<div id="sicherheitshinweise">Hier kommt AJAX</div>
 			<br>
 			<input value="Registrierung" name="register" type="submit" id="button" >

@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.regex.*"%>
 
+<%!
+public boolean rexinclude(String rex, String txt) {
+	Pattern p = Pattern.compile(rex);
+	Matcher m = p.matcher(txt);
+	return m.find();
+}
+%>
+
 <%
 	String password = request.getParameter("q");
 
@@ -10,29 +18,32 @@
 	}
 
 	int secnum = password.length();
+	
+	int catcount = 0;
 
-	if (Pattern.matches("/[a-z]+/", password)) {
-		secnum = secnum + 5;
+	if (rexinclude("[a-z]+", password)) {
+		catcount++;
 	}
 
-	if (Pattern.matches("/[A-Z]+/", password)) {
-		secnum = secnum + 5;
+	if (rexinclude("[A-Z]+", password)) {
+		catcount++;
 	}
 
-	if (Pattern.matches("/[0-9]+/", password)) {
-		secnum = secnum + 5;
+	if (rexinclude("[0-9]+", password)) {
+		catcount++;
 	}
 
-	if (Pattern.matches("[.,;:-_ #'+*~!§$%&/()\\[\\]{}\\=?<>|]+", password)) {
-		secnum = secnum + 5;
-
+	if (rexinclude("[.,;:\\-_ #'+*~!§$%&/()\\[\\]{}\\=?<>|]+", password)) {
+		catcount++;
 	}
+	
+	secnum *= catcount;
 
 	if (secnum <= 18) {
-		out.println("unsicher (" + secnum + " Punkte)");
-	} else if (secnum <= 25) {
-		out.println("sicher (" + secnum + " Punkte)");
-	} else if (secnum > 25) {
-		out.println("sehr sicher (" + secnum + " Punkte)");
+		out.println("<font color=\"red\">unsicher (" + secnum + " Punkte)</font>");
+	} else if (secnum <= 30) {
+		out.println("<font color=\"yellow\">sicher (" + secnum + " Punkte)</font>");
+	} else {
+		out.println("<font color=\"green\">sehr sicher (" + secnum + " Punkte)</font>");
 	}
 %>
