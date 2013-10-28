@@ -8,37 +8,28 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <script type="text/javascript">
-function testekennwortqualitaet(inhalt)
-{
-	var check = inhalt;
-	var url = "http://localhost/kennworttesten.php?q=";
-	url = url + check;
-	
-if (check == "")
-{
-    document.getElementById("sicherheitshinweise").innerHTML="leer";
-    return;
-}
-else
-{
-	var xmlhttp;
-    xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET",url,true);
-    xmlhttp.send();
-xmlhttp.onreadystatechange=function()
-{
-    if (xmlhttp.readyState==4 )
-    {
-        
-        document.getElementById("sicherheitshinweise").innerHTML=xmlhttp.responseText;
-        
-    }
-    else{document.getElementById("sicherheitshinweise").innerHTML=url;}
-    
-}
+	function testekennwortqualitaet(inhalt) {
+		var check = inhalt;
+		var url = "testpw.jsp?q=";
+		url = url + check;
 
-}
-}
+		if (check == "") {
+			document.getElementById("sicherheitshinweise").innerHTML = "leer";
+			return;
+		} else {
+			var xmlhttp;
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET", url, true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4) {
+					document.getElementById("sicherheitshinweise").innerHTML = xmlhttp.responseText;
+				} else {
+					document.getElementById("sicherheitshinweise").innerHTML = url;
+				}
+			}
+		}
+	}
 </script>
 </head>
 <body id="body">
@@ -55,8 +46,8 @@ xmlhttp.onreadystatechange=function()
 			<br>
 			<input name="wohnort" placeholder="Wohnort" type="text" id="usernametextfield">
 			<br>
-			<select name="hochschule"  id="dropdownmenue">
-  			<option value="hochschule">Hochschule</option>
+			<select name="hochschule"  id="selectionfield">
+  			<option value="hochschule" disabled selected>Hochschule</option>
   			<option value="hochschule 1">Hochschule 1</option>
   			<option value="hochschule 2">Hochschule 2</option>
   			<option value="hochschule 3">Hochschule 3</option>
