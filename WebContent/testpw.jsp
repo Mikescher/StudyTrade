@@ -10,7 +10,7 @@ public boolean rexinclude(String rex, String txt) {
 %>
 
 <%
-	String password = request.getParameter("q");
+	String password = request.getParameter("pw");
 
 	if (password == null) {
 		out.println("No PW given");
@@ -39,11 +39,10 @@ public boolean rexinclude(String rex, String txt) {
 	
 	secnum *= catcount;
 
-	if (secnum <= 18) {
-		out.println("<font color=\"red\">unsicher (" + secnum + " Punkte)</font>");
-	} else if (secnum <= 30) {
-		out.println("<font color=\"yellow\">sicher (" + secnum + " Punkte)</font>");
-	} else {
-		out.println("<font color=\"green\">sehr sicher (" + secnum + " Punkte)</font>");
-	}
+	secnum *= 100;
+	secnum /= 24; // 24 == optimal (6 chars * 4categories)
+	
+	secnum = (secnum > 100) ? 100 : secnum;
+			
+	out.println(secnum);
 %>
