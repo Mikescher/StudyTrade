@@ -9,22 +9,24 @@
 <script src="jquery-ui-1.10.3.js" type="text/javascript"></script>
 
 <script>
-    function doBoxShake() {
-    	var s = $("#loginBox");
-    	s.effect("shake", { times:3 }, 500);
-    }
+	function doBoxShake() {
+		var s = $("#loginBox");
+		s.effect("shake", {
+			times : 3
+		}, 500);
+	}
 </script>
 
 </head>
-<body id="body">
-	<div id="loginBox">
-	   <h1 id="loginTitle">studyTrade</h1>
+<body class="standard_body">
+	<div class="contentbox" id="contentbox_login">
+		<h1 class="contentbox_title">studyTrade</h1>
 		<form action="./login.jsp" method="get">
-			<input name="user" placeholder="Username" type="text" id="usernametextfield">
+			<input name="user" placeholder="Username" type="text" class="inputbox_textfield">
 			<br>
-			<input name="pass" placeholder="Password" type="password" id="passwordtextfield">
+			<input name="pass" placeholder="Password" type="password" class="inputbox_textfield">
 			<br>
-			<input value="Log In" name="login" type="submit" id="button" >
+			<input value="Log In" name="login" type="submit" class="standard_content_button">
 		</form>
 	</div>
 </body>
