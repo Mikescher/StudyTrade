@@ -85,7 +85,7 @@
 					changePWMeter(perc);
 				} else {
 					// SOME THING WONG
-					$("#sicherheitshinweise").html(url);
+					$("#only 4 testing").html(url);
 				}
 			}
 		}
