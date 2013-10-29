@@ -122,6 +122,19 @@
     cursor:pointer;
 }
 
+.inputbox_validate_successfull {
+    background: url(images/check_1.png) no-repeat scroll right;
+    background-size: 20px 20px;
+    background-position: right 5px center;
+}
+
+.inputbox_validate_unsuccessfull {
+    background: url(images/check_0.png) no-repeat scroll right;
+    background-size: 20px 20px;
+    background-position: right 5px center;
+}
+
+
 /* ################################ */
 /* ################################ */
 /*            FORMULARE             */
