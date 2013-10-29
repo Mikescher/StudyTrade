@@ -263,7 +263,7 @@
 			<br>
 			<input name="password_check" type="password" placeholder="Passwort" class="inputbox_textfield" id="register_password_field_check"/>
 			<div class="pw_meter pw_meter_orange">
-                <span style="width: 0%" id="pw_meter_innerspan"></span>
+                <span style="width: 0%" id="pw_meter_innerspan"><span></span></span>
             </div>
 			<br>
 			<input value="Registrierung" name="register" type="submit" class="standard_content_button">

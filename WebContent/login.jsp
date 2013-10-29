@@ -1,27 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
 <title>Login</title>
-<link rel="stylesheet" type="text/css" href="style.css">
 
-<script src="jquery-1.9.1.js" type="text/javascript"></script>
-<script src="jquery-ui-1.10.3.js" type="text/javascript"></script>
-
-<script>
-	function doBoxShake() {
-		var s = $("#loginBox");
-		s.effect("shake", {
-			times : 3
-		}, 500);
-	}
-</script>
+<jsp:include page="commonincludes.jsp"/>
 
 </head>
 <body class="standard_body">
+    
+    <jsp:include page="header.jsp"/>
+    <jsp:include page="sidebar.jsp"/>
+    
+
 	<div class="contentbox" id="contentbox_login">
-		<h1 class="contentbox_title">studyTrade</h1>
-		<form action="./login.jsp" method="get">
+		<h1 class="contentbox_title">Login</h1>
+		<form action="./login.jsp" method="get" onsubmit="shakeContentBox('#contentbox_login'); return false;">
 			<input name="user" placeholder="Username" type="text" class="inputbox_textfield">
 			<br>
 			<input name="pass" placeholder="Password" type="password" class="inputbox_textfield">
