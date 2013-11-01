@@ -14,6 +14,8 @@
 
 </head>
 <body class="standard_body">
+
+
 	<div class="contentbox" id="contentbox_newarticle">	
 		<h1 class="contentbox_title">neuen Artikel einstellen</h1>
 		<form action="./index.jsp" method="GET" onsubmit="return validateData()">
@@ -27,24 +29,27 @@
 			</select>
 			<br>
 			<br>
-			<textarea name="artikelbeschreibung" placeholder="Artikelbescheibung" class="textarea_newarticle"></textarea>
+			<textarea name="artikelbeschreibung" maxlength="500" placeholder="Artikelbescheibung (max. 500 Zeichen)" class="textarea_newarticle"></textarea>
 			<table border="0" align="center" bordercolor="#FFFFF" style="background-color:#FFFFF" width="580" cellpadding="0" cellspacing="0">
-			  	<colgroup>
-				 	<col span="2" >
- 				</colgroup>
 			<tr>
 			<td> 
-				<input name="standort"  maxlength="20" placeholder="Standort" type="text" class="inputbox_textfield" id="newarticle_artikelbez_field">
+				<input name="standort" maxlength="20" placeholder="Standort" type="text" class="inputbox_textfield" id="newarticle_artikelbez_field">
 			  	<br>
 			   	<input name="telefon" maxlength="20" placeholder="Telefon" type="text" class="inputbox_textfield" id="newarticle_artikelbez_field">
 			</td>
 			<td	>
+				<div class="upload_file" style="border: 1px; height: 60px; width: 260px; background-color: grey; margin-bottom: 10px">Hier kommt der Dateiupload hin</div>
+			
 			</td>
 			</tr>
 			</table>
 			
+			<input value="Überprüfen" name="newarticle_check" type="submit" class="standard_content_button">
+			
 			
 		</form>
+		
+		
 	</div>
 </body>
 
