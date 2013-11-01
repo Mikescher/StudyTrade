@@ -181,6 +181,39 @@
     outline: none;
 }
 
+.inputbox_textfield_long {
+    width: 350px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 1px;
+    box-shadow: 0 0 2px #DDD inset;
+    color: #666;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.textarea_newarticle {
+	width: 590px;
+	height: 130px;
+	margin-bottom: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	background: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 1px;
+    box-shadow: 0 0 2px #DDD inset;
+    color: #666;
+    padding: 5px 10px;
+    outline: none;
+	
+}
+
+
 .inputbox_selectionfield {
     width: 225px;
     margin-bottom : 10px;
@@ -226,6 +259,13 @@
 
 #contentbox_register {
     height : 450px;
+}
+
+#contentbox_newarticle {
+    height : 450px;
+    width: 650px;
+    
+    
 }
 
 .contentbox_title {

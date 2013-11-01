@@ -19,7 +19,7 @@
     <jsp:include page="sidebar.jsp"/>
 
 	<div class="contentbox" id="contentbox_register">	
-		<h1 class="contentbox_title">Register +++++MIKE++++</h1>
+		<h1 class="contentbox_title">Register</h1>
 
 		<form action="./index.jsp" method="GET" onsubmit="return validateData()">
 			<input name="forname" placeholder="Vorname" type="text" class="inputbox_textfield" id="register_forename_field">
