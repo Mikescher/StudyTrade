@@ -26,7 +26,9 @@
 				<input value="Log In" name="login" type="submit" class="standard_content_button">
 			</form>
 		</div>
-
 	</div>
+	
+	<jsp:include page="footer.jsp" />
+	
 </body>
 </html>

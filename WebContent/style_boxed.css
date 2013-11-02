@@ -57,6 +57,12 @@
     padding-top : 10px;
 }
 
+.footerbox {
+    height: 20px;
+    text-align: left;
+    padding-left: 100px;
+}
+
 .sidebarbox {
     position: absolute;
     height: 70%;
