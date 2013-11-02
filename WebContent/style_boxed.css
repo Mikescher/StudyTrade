@@ -58,9 +58,11 @@
 }
 
 .footerbox {
+    width: 85%;
+    margin: 0 auto;
+    
     height: 20px;
     text-align: left;
-    padding-left: 100px;
 }
 
 .sidebarbox {
