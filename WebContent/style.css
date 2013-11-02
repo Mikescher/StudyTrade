@@ -15,13 +15,6 @@
 /* ################################ */
 /* ################################ */
 
-.bottombox {
-	position: absolute;
-    height:20px;
-    align:center;
-    bottom:-20px;
-}
-
 .contentbox {
     background: #FFF;
     position: absolute;
@@ -40,59 +33,34 @@
     padding-top : 10px;
 }
 
-#distance
-{
-    width:1px;
-    height:20px;
-   	float:left;
-}
-
 .headerbox {
     background: #FFF0;
-    display:block;
-    border-radius: 1px 1px 1px 1px;
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;    	 /* don't know how to change */
-    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;			 /* don't know how to change */
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.8), 0 0 32px rgba(0, 0, 0, 0.1) inset;				 /* don't know how to change */
+    display: block;
+    border-radius: 2px 2px 64px 64px;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.8), 0 0 32px rgba(0, 0, 0, 0.1) inset;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
     padding-top : 10px;
 }
 
-#mainframe
-{
-    position:relative;
-    margin:0 auto;
-    text-align:center;
-    clear:left;
-    width:85%;
-    min-height:700px;
-    height:auto;
-    border-radius: 2px 2px 2px 2px;
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    z-index: 0;
-    background-color: white;
-    padding: 0px;
-}
-
 .sidebarbox {
     position: absolute;
-    height: 400px;
+    height: calc(100% - 200px);
     width: 100px;
     margin-top: 25px;
-    margin-left: 0px;
+    margin-left: -8px;
     padding-top: 20px;
-    border-radius: 1px 1px 1px 1px;
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;		/* don't know how to change */
-    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;			/* don't know how to change */
-    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.8), 0 0 32px rgba(0, 0, 0, 0.1) inset;				/* don't know how to change */
+    border-radius: 2px 32px 128px 2px;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.8), 0 0 32px rgba(0, 0, 0, 0.1) inset;
 }
 
 .sidebarbox_element {
-    font-size: 130%;
+    font-size: 150%;
     border-width : 0px;
     border-top-style: solid;
     border-top-width: 1px;
@@ -214,7 +182,7 @@
 }
 
 .inputbox_textfield_long {
-    width: 296px;
+    width: 350px;
     margin-bottom: 10px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -229,7 +197,7 @@
 }
 
 .textarea_newarticle {
-	width: 537px;
+	width: 590px;
 	height: 130px;
 	margin-bottom: 10px;
     box-sizing: border-box;
@@ -294,8 +262,8 @@
 }
 
 #contentbox_newarticle {
-    height : 360px;
-    width: 600px;
+    height : 450px;
+    width: 650px;
     
     
 }

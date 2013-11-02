@@ -10,7 +10,7 @@
 
 </head>
 <body class="standard_body">
-   
+    
     <jsp:include page="header.jsp"/>
     <jsp:include page="sidebar.jsp"/>
     
