@@ -63,6 +63,8 @@ Desktop.ini
 ## Web Server
 ############
 
+target/
+
 ############
 ## Other
 ############

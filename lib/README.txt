@@ -1,1 +1,0 @@
-Ordner für referenzierte Librarys

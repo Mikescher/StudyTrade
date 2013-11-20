@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html>
@@ -18,13 +20,13 @@
 
 		<div class="contentbox" id="contentbox_login">
 			<h1 class="contentbox_title">Login</h1>
-			<form action="./login.jsp" method="get" onsubmit="shakeContentBox('#contentbox_login'); return false;">
-				<input name="user" placeholder="Username" type="text" class="inputbox_textfield">
+			<form:form id="form" method="POST" modelAttribute="loginBean"> <!-- onsubmit="shakeContentBox('#contentbox_login'); return false;" -->
+				<form:input path="username" placeholder="Username" type="text" class="inputbox_textfield" />
 				<br>
-				<input name="pass" placeholder="Password" type="password" class="inputbox_textfield">
+				<form:input path="password" placeholder="Password" type="password" class="inputbox_textfield" />
 				<br>
-				<input value="Log In" name="login" type="submit" class="standard_content_button">
-			</form>
+				<input value="Log In" name="login" type="submit" class="standard_content_button" />
+			</form:form>
 		</div>
 	</div>
 	

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="studyTrade.MainPageBean" %>
 <%@ page import="java.io.File"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,6 +18,6 @@
     	out.println(String.format("<a href=\"%s\">%s</a><br>", list[i].getName(), list[i].getName()));
     }
     %>
-    <p> <a href='/StudyTrade/MainPage'>zur&uuml;ck</a> </p>
+    <p> <a href='/studyTrade/MainPage'>zur&uuml;ck</a> </p>
   </body>
 </html>
