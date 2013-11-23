@@ -19,7 +19,7 @@
         <jsp:include page="sidebar.jsp" />
 
         <div class="contentbox" id="contentbox_login">
-            <h1 class="contentbox_title">You've been logged in</h1>
+            <h1 class="contentbox_title" style="color:green;">You've been logged in as ${loginname}</h1>
         </div>
     </div>
     

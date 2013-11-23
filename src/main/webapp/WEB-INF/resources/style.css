@@ -257,6 +257,24 @@
     background-position: right 5px center;
 }
 
+.contentbox_login_message {
+    background-color: red;
+    color: #FFF;
+    margin-bottom: 10px;
+    width: 215px;
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    border: 1px solid #000;
+    border-radius: 1px;
+    box-shadow: 0 0 1px #000 inset;
+    outline: none;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.contentbox_login_message:empty { display: none }
 
 /* ################################ */
 /* ################################ */
@@ -265,7 +283,7 @@
 /* ################################ */
 
 #contentbox_login {
-    height : 170px;
+    height : 250px;
 }
 
 #contentbox_register {

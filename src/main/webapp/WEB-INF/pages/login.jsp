@@ -20,6 +20,7 @@
 
 		<div class="contentbox" id="contentbox_login">
 			<h1 class="contentbox_title">Login</h1>
+			<div class="contentbox_login_message">${infomsg}</div>
 			<form:form id="form" method="POST" modelAttribute="loginBean"> <!-- onsubmit="shakeContentBox('#contentbox_login'); return false;" -->
 				<form:input path="username" placeholder="Username" type="text" class="inputbox_textfield" />
 				<br>
@@ -27,6 +28,8 @@
 				<br>
 				<input value="Log In" name="login" type="submit" class="standard_content_button" />
 			</form:form>
+			
+			<i>BN: root // PW: 123</i>
 		</div>
 	</div>
 	
