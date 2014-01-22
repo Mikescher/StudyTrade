@@ -1,5 +1,10 @@
 package de.dh_karlsruhe.it.softweng.studyTrade.login;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -25,14 +30,59 @@ public class LoginBean {
 	}
 
 	public void setPassword(String password) {
-		this.password = doHash(password);
+		/*this.password = doHash(password);*/
+		/*Fur den Anfang auf Hashing verzichtet*/
+		this.password = password;
 	}
-	
+
 	public String doHash(String s) {
 		return String.valueOf(s.hashCode()); // Worst Hashing evar ^^ Just 4 Testing
 	}
+	private Statement st = null;
+	private Connection con = null;
+	private ResultSet rs = null;
 	
 	public boolean isInDB() {
-		return username.equalsIgnoreCase("root") && password.equalsIgnoreCase(doHash("123"));
+		try {
+			/* rudimentäre Datenbankabfrage
+			 * im Verzeichnis /eclipse/lib/
+			 * muss der jdbc Driver liegen, den findet ihr unter 
+			 * http://dev.mysql.com/downloads/connector/j/
+			 * und die Datei heißt: mysql-connector-java-5.1.28-bin.jar
+			 */
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			/*Der User muss natürlich in der DB angelegt werden
+			 * und mit den nötigen Rechten ausgestattet werden */
+			String user = "server";
+			String password = "passwort";
+			
+			/*Verbindungsaufbau zur DB, bei mir heißt sie project_one*/
+			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, password);
+			
+			/*SQL Statement erstellen ...*/
+			st = con.createStatement();
+			String query = "Select count(*) AS CNT from users where username ='"+username+"' and pw_hash="+password;
+			/*... und ausführen*/
+			rs = st.executeQuery(query);
+			int CNT = 0;
+			
+			/*SQL liefert einen Wert (CNT) zurück der auf jeden Fall true ist. */
+			if(rs.next()){
+				CNT = rs.getInt("CNT");
+			}
+			if(CNT == 1){
+				return true;
+			}
+			return false;
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+
+		}
 	}
 }
