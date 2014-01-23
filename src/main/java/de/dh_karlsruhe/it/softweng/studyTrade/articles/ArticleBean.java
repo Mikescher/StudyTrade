@@ -5,8 +5,6 @@ package de.dh_karlsruhe.it.softweng.studyTrade.articles;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -61,7 +59,7 @@ public class ArticleBean implements Serializable {
 	/**
 	 * @return the article_category
 	 */
-	@Min(1) @Max(30)
+	
 	@NotNull(message ="Bitte wählen sie eine Kategorie für ihr Angebot.")
 	public int getArticle_category() {
 		return article_category;
@@ -77,7 +75,7 @@ public class ArticleBean implements Serializable {
 	/**
 	 * @return the article_price
 	 */
-	@Min(1)
+	/*Validation @Min(x) didn't work !! */
 	@NotNull(message ="Bitte geben sie einen Preis ein")
 	public float getArticle_price() {
 		return article_price;
