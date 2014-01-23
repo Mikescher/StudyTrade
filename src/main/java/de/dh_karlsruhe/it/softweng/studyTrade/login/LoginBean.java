@@ -12,6 +12,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class LoginBean {
 	private String username;
 	private String password;
+	private Statement st = null;
+	private Connection con = null;
+	private ResultSet rs = null;
 
 	@NotNull
 	@NotEmpty(message ="Bitte geben sie eine Benutzernamen an")
@@ -38,9 +41,7 @@ public class LoginBean {
 	public String doHash(String s) {
 		return String.valueOf(s.hashCode()); // Worst Hashing evar ^^ Just 4 Testing
 	}
-	private Statement st = null;
-	private Connection con = null;
-	private ResultSet rs = null;
+	
 	
 	public boolean isInDB() {
 		try {
@@ -55,10 +56,10 @@ public class LoginBean {
 			/*Der User muss natürlich in der DB angelegt werden
 			 * und mit den nötigen Rechten ausgestattet werden */
 			String user = "server";
-			String password = "passwort";
+			String serv_password = "passwort";
 			
 			/*Verbindungsaufbau zur DB, bei mir heißt sie project_one*/
-			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, password);
+			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
 			
 			/*SQL Statement erstellen ...*/
 			st = con.createStatement();

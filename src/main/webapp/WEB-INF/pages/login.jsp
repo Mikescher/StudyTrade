@@ -21,7 +21,7 @@
 		<div class="contentbox" id="contentbox_login">
 			<h1 class="contentbox_title">Login</h1>
 			<div class="contentbox_login_message">${infomsg}</div>
-			<form:form id="form" method="POST" modelAttribute="loginBean"> <!-- onsubmit="shakeContentBox('#contentbox_login'); return false;" -->
+			<form:form id="form" method="POST" modelAttribute="loginBean"> 
 				<form:input path="username" placeholder="Username" type="text" class="inputbox_textfield" />
 				<br>
 				<form:input path="password" placeholder="Password" type="password" class="inputbox_textfield" />
