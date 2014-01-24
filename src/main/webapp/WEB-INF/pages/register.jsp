@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 
@@ -17,46 +19,46 @@
 
 	<div class="mainBox">
 
-		<jsp:include page="header.jsp" />
-		<jsp:include page="sidebar.jsp" />
+
 
 		<div class="contentbox" id="contentbox_register">
 			<h1 class="contentbox_title">Register</h1>
 
-			<form action="./index.jsp" method="GET" onsubmit="return validateData()">
-				<input name="forname" placeholder="Vorname" type="text" class="inputbox_textfield" id="register_forename_field">
+			<form:form id="form" method="POST" modelAttribute="userBean">
+				<form:input path="user_forename" placeholder="Vorname" type="text" class="inputbox_textfield" ></form:input>
 				<br>
-				<input name="surname" placeholder="Nachname" type="text" class="inputbox_textfield" id="register_lastname_field">
+				<form:input path="user_lastname" placeholder="Nachname" type="text" class="inputbox_textfield"></form:input>
 				<br>
-				<input name="nickname" placeholder="Nickname" type="text" class="inputbox_textfield" id="register_nickname_field">
+				<form:input path="user_nickname" placeholder="Nickname" type="text" class="inputbox_textfield" ></form:input>
 				<br>
-				<input name="address" placeholder="Wohnort" type="text" class="inputbox_textfield" id="register_address_field">
-				<br> <select name="university" class="inputbox_selectionfield" id="register_university_field">
-					<option value="h0" disabled selected>Hochschule</option>
-					<option value="h1">Hochschule 1</option>
-					<option value="h2">Hochschule 2</option>
-					<option value="h3">Hochschule 3</option>
-					<option value="h4">Hochschule 4</option>
-					<option value="h5">Hochschule 5</option>
-				</select> <br>
-				<input name="branch" placeholder="Studienrichtung" type="text" class="inputbox_textfield" id="register_branch_field">
+				<form:input path="user_city" placeholder="Wohnort" type="text" class="inputbox_textfield" ></form:input>
+				<br> <form:select path="user_school" class="inputbox_selectionfield" >
+					<option  value="10" disabled selected>Hochschule</option>
+					<option value=11>Hochschule 1</option>
+					<option value=12>Hochschule 2</option>
+					<option value=13>Hochschule 3</option>
+					<option value=14>Hochschule 4</option>
+					<option value=15>Hochschule 5</option>
+				</form:select> <br>
+				<form:input path="user_studydirection" placeholder="Studienrichtung" type="text" class="inputbox_textfield" id="register_branch_field"></form:input>
 				<br>
-				<input name="email" placeholder="E-Mail" type="text" class="inputbox_textfield" id="register_email_field">
+				<form:input path="user_mail" placeholder="E-Mail" type="text" class="inputbox_textfield" id="register_email_field"></form:input>
 				<br>
-				<input name="password" type="password" placeholder="Passwort" class="inputbox_textfield" id="register_password_field" />
+				<form:input path="user_password" type="password" placeholder="Passwort" class="inputbox_textfield" id="register_password_field"></form:input>
 				<br>
 				<input name="password_check" type="password" placeholder="Passwort" class="inputbox_textfield" id="register_password_field_check" />
 				<div class="pw_meter pw_meter_orange">
 					<span style="width: 0%" id="pw_meter_innerspan"><span></span></span>
 				</div>
 				<br>
-				<input value="Registrierung" name="register" type="submit" class="standard_content_button">
+				<input value="Registrieren" name=register type="submit" class="standard_content_button" />
 				<br> <br>
-			</form>
+			</form:form>
+			<div class="contentbox_login_message">${infomsg}</div>
 		</div>
 	</div>
 	
-	<jsp:include page="footer.jsp" />
+	
 	
 </body>
 

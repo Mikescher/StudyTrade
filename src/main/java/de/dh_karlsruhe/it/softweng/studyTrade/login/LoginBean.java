@@ -63,7 +63,7 @@ public class LoginBean {
 			
 			/*SQL Statement erstellen ...*/
 			st = con.createStatement();
-			String query = "Select count(*) AS CNT from users where username ='"+username+"' and pw_hash="+password;
+			String query = "Select count(*) AS CNT from new_users where user_nickname ='"+username+"' and user_password="+password;
 			/*... und ausführen*/
 			rs = st.executeQuery(query);
 			int CNT = 0;

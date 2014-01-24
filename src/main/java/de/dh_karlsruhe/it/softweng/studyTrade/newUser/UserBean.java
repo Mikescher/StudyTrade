@@ -3,7 +3,13 @@
  */
 package de.dh_karlsruhe.it.softweng.studyTrade.newUser;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Calendar;
 
 import javax.validation.constraints.NotNull;
 
@@ -11,31 +17,38 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class UserBean implements Serializable{
 
-	
-	private static final long serialVersionUID = 1L;
-	private String user_id;
-    private String user_name;
-    private String user_lastname;
-    private String user_forename;
-    private String user_city;
-    private String user_mail;
-    private String user_password;
-    private int user_school;
-    private int user_studydirection;
-    private Date user_logindate;
 
-    public UserBean() {
+	private static final long serialVersionUID = 1L;
+
+	private String user_nickname;
+	private String user_lastname;
+	private String user_forename;
+	private String user_city;
+	private String user_mail;
+	private String user_password;
+	private int user_school;
+	private int user_studydirection;
+
+
+	private Connection con = null;
+	PreparedStatement pst = null;
+	private Statement st = null;
+	
+	private ResultSet rs = null;
+
+
+
+	public UserBean() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	public UserBean(String user_id, String user_name, String user_lastname,
+
+	public UserBean( String user_nickname, String user_lastname,
 			String user_forename, String user_city, String user_mail,
-			String user_password, int user_school, int user_studydirection,
-			Date user_logindate) {
+			String user_password, int user_school, int user_studydirection) {
 		super();
-		this.user_id = user_id;
-		this.user_name = user_name;
+
+		this.user_nickname = user_nickname;
 		this.user_lastname = user_lastname;
 		this.user_forename = user_forename;
 		this.user_city = user_city;
@@ -43,39 +56,25 @@ public class UserBean implements Serializable{
 		this.user_password = user_password;
 		this.user_school = user_school;
 		this.user_studydirection = user_studydirection;
-		this.user_logindate = user_logindate;
+
 	}
 
+
+
 	/**
-	 * @return the user_id
+	 * @return the user_nickname
 	 */
 	@NotNull
 	@NotEmpty(message ="Feld leer")
-	public String getUser_id() {
-		return user_id;
+	public String getUser_nickname() {
+		return user_nickname;
 	}
 
 	/**
-	 * @param user_id the user_id to set
+	 * @param user_nickname the user_nickname to set
 	 */
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-
-	/**
-	 * @return the user_name
-	 */
-	@NotNull
-	@NotEmpty(message ="Feld leer")
-	public String getUser_name() {
-		return user_name;
-	}
-
-	/**
-	 * @param user_name the user_name to set
-	 */
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
 	}
 
 	/**
@@ -161,7 +160,7 @@ public class UserBean implements Serializable{
 	/**
 	 * @return the user_school
 	 */
-	@NotNull(message ="Feld leer")
+	@NotNull(message ="Schule")
 	public int getUser_school() {
 		return user_school;
 	}
@@ -176,7 +175,7 @@ public class UserBean implements Serializable{
 	/**
 	 * @return the user_studydirection
 	 */
-	@NotNull(message ="Feld leer")
+	@NotNull(message ="Studienrichtung")
 	public int getUser_studydirection() {
 		return user_studydirection;
 	}
@@ -191,17 +190,88 @@ public class UserBean implements Serializable{
 	/**
 	 * @return the user_logindate
 	 */
-	@NotNull
-	@NotEmpty(message ="Feld leer")
-	public Date getUser_logindate() {
-		return user_logindate;
-	}
 
-	/**
-	 * @param user_logindate the user_logindate to set
-	 */
-	public void setUser_logindate(Date user_logindate) {
-		this.user_logindate = user_logindate;
-	}
+	public boolean UserAlreadyInDB(){
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			/*Der User muss natürlich in der DB angelegt werden
+			 * und mit den nötigen Rechten ausgestattet werden */
+			String user = "server";
+			String serv_password = "passwort";
+			
+			/*Verbindungsaufbau zur DB, bei mir heißt sie project_one*/
+			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
+			
+			/*SQL Statement erstellen ...*/
+			st = con.createStatement();
+			/*TODO spezialisierte Rückmeldungen ausgeben !!*/
+			String query = "Select count(*) AS CNT from new_users where ( user_forename='"+user_forename+"' and user_lastname='"+user_lastname + 
+															"' ) or user_mail='" + user_mail +
+															"' or user_nickname= '" + user_nickname +"'";
+			/*... und ausführen*/
+			rs = st.executeQuery(query);
+			int CNT = 0;
+			
+			/*SQL liefert EINEN Wert (CNT) zurück der auf jeden Fall true ist. */
+			if(rs.next()){
+				CNT = rs.getInt("CNT");
+			}
+			if(CNT == 0){
+				System.out.println("User ist bereits in der DB vorhanden ");
+				return true;
+			}
+			return false;
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 
+		}
+	}
+	public boolean UserToDB(){
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+
+			/*Der User muss natürlich in der DB angelegt werden
+			 * und mit den nötigen Rechten ausgestattet werden */
+			String user = "server";
+			String serv_password = "passwort";
+
+			Calendar cal = Calendar.getInstance();  
+			java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
+			
+			
+		
+			/*Verbindungsaufbau zur DB, bei mir heißt sie project_one*/
+			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
+			String query = "INSERT INTO new_users VALUES (default,?,?,?,?,?,?,?,?,?)";
+			pst = con.prepareStatement(query);
+	
+			pst.setString(1, user_nickname);
+			pst.setString(2, user_lastname);
+			pst.setString(3, user_forename);
+			pst.setString(4, user_city);
+			pst.setString(5, user_mail);
+			pst.setString(6, user_password);
+			pst.setLong(7, user_school);
+			pst.setLong(8, user_studydirection);
+			pst.setTimestamp(9, timestamp);
+			pst.executeUpdate();
+			con.close();
+
+			return true;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+
+		}
+	}
 }
