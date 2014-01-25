@@ -29,19 +29,14 @@ public class UserBean implements Serializable{
 	private int user_school;
 	private int user_studydirection;
 
-
 	private Connection con = null;
 	PreparedStatement pst = null;
 	private Statement st = null;
-	
 	private ResultSet rs = null;
-
-
 
 	public UserBean() {
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public UserBean( String user_nickname, String user_lastname,
 			String user_forename, String user_city, String user_mail,
@@ -58,8 +53,6 @@ public class UserBean implements Serializable{
 		this.user_studydirection = user_studydirection;
 
 	}
-
-
 
 	/**
 	 * @return the user_nickname
@@ -194,25 +187,25 @@ public class UserBean implements Serializable{
 	public boolean UserAlreadyInDB(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			
+
 			/*Der User muss natürlich in der DB angelegt werden
 			 * und mit den nötigen Rechten ausgestattet werden */
 			String user = "server";
 			String serv_password = "passwort";
-			
+
 			/*Verbindungsaufbau zur DB, bei mir heißt sie project_one*/
 			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
-			
+
 			/*SQL Statement erstellen ...*/
 			st = con.createStatement();
 			/*TODO spezialisierte Rückmeldungen ausgeben !!*/
 			String query = "Select count(*) AS CNT from new_users where ( user_forename='"+user_forename+"' and user_lastname='"+user_lastname + 
-															"' ) or user_mail='" + user_mail +
-															"' or user_nickname= '" + user_nickname +"'";
+					"' ) or user_mail='" + user_mail +
+					"' or user_nickname= '" + user_nickname +"'";
 			/*... und ausführen*/
 			rs = st.executeQuery(query);
 			int CNT = 0;
-			
+
 			/*SQL liefert EINEN Wert (CNT) zurück der auf jeden Fall true ist. */
 			if(rs.next()){
 				CNT = rs.getInt("CNT");
@@ -222,36 +215,33 @@ public class UserBean implements Serializable{
 				return true;
 			}
 			return false;
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			return false;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-
 		}
 	}
 	public boolean UserToDB(){
 		try {
-			
-			Class.forName("com.mysql.jdbc.Driver");
 
+			Class.forName("com.mysql.jdbc.Driver");
 			/*Der User muss natürlich in der DB angelegt werden
 			 * und mit den nötigen Rechten ausgestattet werden */
 			String user = "server";
 			String serv_password = "passwort";
+			/*TODO Login-Daten auslagern*/
 
 			Calendar cal = Calendar.getInstance();  
 			java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
-			
-			
-		
+
 			/*Verbindungsaufbau zur DB, bei mir heißt sie project_one*/
 			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
 			String query = "INSERT INTO new_users VALUES (default,?,?,?,?,?,?,?,?,?)";
 			pst = con.prepareStatement(query);
-	
+
 			pst.setString(1, user_nickname);
 			pst.setString(2, user_lastname);
 			pst.setString(3, user_forename);

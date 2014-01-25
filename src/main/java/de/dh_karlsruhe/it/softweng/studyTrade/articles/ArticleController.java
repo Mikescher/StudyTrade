@@ -45,6 +45,7 @@ public class ArticleController {
 			 * -> Eintragung in DB
 			 * */
 			model.addAttribute("infomsg", "Erfolgreich");
+			
 			return "newArticle";
 
 

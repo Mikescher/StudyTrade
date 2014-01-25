@@ -18,14 +18,14 @@ public class LoginController {
 
 	@ModelAttribute("loginBean")
 	public LoginBean createFormBean() {
-			return new LoginBean();
+		return new LoginBean();
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String displayForm() {
-			return "login";
+		return "login";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String getLoginView(ModelMap model, @Valid LoginBean bean, BindingResult br) {
 		if (br.hasErrors() || ! bean.isInDB()) {
@@ -43,6 +43,6 @@ public class LoginController {
 			model.addAttribute("loginname", bean.getUsername());
 			return "login_succ";
 		}
-		
+
 	}
 }

@@ -41,8 +41,8 @@ public class LoginBean {
 	public String doHash(String s) {
 		return String.valueOf(s.hashCode()); // Worst Hashing evar ^^ Just 4 Testing
 	}
-	
-	
+
+
 	public boolean isInDB() {
 		try {
 			/* rudimentäre Datenbankabfrage
@@ -52,22 +52,22 @@ public class LoginBean {
 			 * und die Datei heißt: mysql-connector-java-5.1.28-bin.jar
 			 */
 			Class.forName("com.mysql.jdbc.Driver");
-			
+
 			/*Der User muss natürlich in der DB angelegt werden
 			 * und mit den nötigen Rechten ausgestattet werden */
 			String user = "server";
 			String serv_password = "passwort";
-			
+
 			/*Verbindungsaufbau zur DB, bei mir heißt sie project_one*/
 			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
-			
+
 			/*SQL Statement erstellen ...*/
 			st = con.createStatement();
-			String query = "Select count(*) AS CNT from new_users where user_nickname ='"+username+"' and user_password="+password;
+			String query = "Select count(*) AS CNT from new_users where user_nickname ='"+username+"' and user_password='"+password+"'";
 			/*... und ausführen*/
 			rs = st.executeQuery(query);
 			int CNT = 0;
-			
+
 			/*SQL liefert einen Wert (CNT) zurück der auf jeden Fall true ist. */
 			if(rs.next()){
 				CNT = rs.getInt("CNT");
@@ -76,7 +76,7 @@ public class LoginBean {
 				return true;
 			}
 			return false;
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			return false;

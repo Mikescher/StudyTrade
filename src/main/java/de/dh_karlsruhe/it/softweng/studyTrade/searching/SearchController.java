@@ -13,13 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import de.dh_karlsruhe.it.softweng.studyTrade.login.LoginBean;
 
-
-/**
- * @author b25966
- *
- */
 @Controller
 @RequestMapping("search")
 @SessionAttributes("searchBean")
