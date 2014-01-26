@@ -1,5 +1,6 @@
 package de.dh_karlsruhe.it.softweng.studyTrade.login;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -15,6 +16,7 @@ public class LoginBean {
 	private Statement st = null;
 	private Connection con = null;
 	private ResultSet rs = null;
+	
 
 	@NotNull
 	@NotEmpty(message ="Bitte geben sie eine Benutzernamen an")
@@ -43,8 +45,13 @@ public class LoginBean {
 	}
 
 
-	public boolean isInDB() {
-		try {
+	
+	
+	
+	public boolean isInDB() throws IOException  {
+	
+			try{ 
+			
 			/* rudimentäre Datenbankabfrage
 			 * im Verzeichnis /eclipse/lib/
 			 * muss der jdbc Driver liegen, den findet ihr unter 
@@ -57,7 +64,7 @@ public class LoginBean {
 			 * und mit den nötigen Rechten ausgestattet werden */
 			String user = "server";
 			String serv_password = "passwort";
-
+		  
 			/*Verbindungsaufbau zur DB, bei mir heißt sie project_one*/
 			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
 

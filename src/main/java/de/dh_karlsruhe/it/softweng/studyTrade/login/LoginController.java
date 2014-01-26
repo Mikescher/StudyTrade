@@ -1,5 +1,7 @@
 package de.dh_karlsruhe.it.softweng.studyTrade.login;
 
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String getLoginView(ModelMap model, @Valid LoginBean bean, BindingResult br) {
+	public String getLoginView(ModelMap model, @Valid LoginBean bean, BindingResult br) throws IOException {
 		if (br.hasErrors() || ! bean.isInDB()) {
 			StringBuilder errBuilder = new StringBuilder();
 			for (ObjectError err : br.getAllErrors()) {
