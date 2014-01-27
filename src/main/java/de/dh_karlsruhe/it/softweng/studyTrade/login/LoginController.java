@@ -1,7 +1,13 @@
 package de.dh_karlsruhe.it.softweng.studyTrade.login;
 
+import java.io.IOException;
+
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +28,7 @@ public class LoginController {
 		return "login";
 	}
 
-	/*@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public String getLoginView(ModelMap model, @Valid LoginBean bean, BindingResult br) throws IOException {
 		if (br.hasErrors() || ! bean.isInDB()) {
 			StringBuilder errBuilder = new StringBuilder();
@@ -40,10 +46,5 @@ public class LoginController {
 			return "login_succ";
 		}
 
-	}*/
-	@RequestMapping(value="/", method = RequestMethod.POST)
-	public String gotoLogin(Model model) throws Exception{
-	return "login";
-		
 	}
 }

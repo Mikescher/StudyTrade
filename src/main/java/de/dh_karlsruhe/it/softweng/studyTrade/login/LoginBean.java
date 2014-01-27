@@ -6,9 +6,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -44,12 +41,8 @@ public class LoginBean {
 	}
 
 	public String doHash(String s) {
-		return String.valueOf(s.hashCode()); // Worst Hashing evar ^^ Just 4 Testing
+		return String.valueOf(s.hashCode()); 
 	}
-
-
-
-
 
 	public boolean isInDB() throws IOException  {
 
@@ -93,35 +86,7 @@ public class LoginBean {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-
 		}
-
 	}
 
-	public List<User> userlist() throws Exception{
-		Connection con = null;
-		ResultSet rs = null;
-		List<User> result = new ArrayList<User>();
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String user = "server";
-			String serv_password = "passwort";
-			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
-			st = con.createStatement();
-			String query = "Select * from user_table";
-			/*... und ausführen*/
-			rs = st.executeQuery(query);
-			while(rs.next()){
-				User us = new User();
-				us.setId(rs.getInt(1));
-				us.setUsername(rs.getString(2));
-				us.setPassword(rs.getString(3));
-				result.add(us);
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return result;
-	}
 }

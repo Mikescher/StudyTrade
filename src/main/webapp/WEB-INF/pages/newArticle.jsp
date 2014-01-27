@@ -45,14 +45,7 @@
 				id="newarticle_artikelbez_field"></form:input>
 			<input value="Überprüfen" name="newarticle_check" type="submit"
 				class="standard_content_button">
-				<table>
-		<c:forEach var="us" items="${articleBean.testlist}">
-			<tr>
-				<td>${us}</td>
-
-			</tr>
-		</c:forEach>
-	</table>
+			
 		</form:form>
 		<div class="contentbox_login_message">${infomsg}</div>
 

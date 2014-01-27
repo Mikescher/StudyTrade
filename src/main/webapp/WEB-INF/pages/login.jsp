@@ -31,16 +31,7 @@
 			<i>BN: root // PW: 123</i>
 		</div>
 		
-		
-		<table>
-<c:forEach var="us" items="${loginBean.userlist}" >
-    <tr>
-     <td>${us.Id}</td>
-      <td>${us.username}</td>
-      <td>${emp.password}</td>
-    </tr>
-  </c:forEach>
-</table>
+
 	</div>
 	
 	

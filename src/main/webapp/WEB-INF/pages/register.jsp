@@ -13,14 +13,10 @@
 
 <jsp:include page="commonincludes.jsp" />
 
-<script src="register_scripts.js" type="text/javascript"></script>
-
 </head>
 <body class="standard_body">
 
 	<div class="mainBox">
-
-
 
 		<div class="contentbox" id="contentbox_register">
 			<h1 class="contentbox_title">Register</h1>
@@ -71,8 +67,6 @@
 			<div class="contentbox_login_message">${infomsg}</div>
 		</div>
 	</div>
-
-
 
 </body>
 

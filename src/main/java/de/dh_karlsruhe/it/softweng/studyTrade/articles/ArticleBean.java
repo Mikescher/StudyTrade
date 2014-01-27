@@ -4,9 +4,6 @@
 package de.dh_karlsruhe.it.softweng.studyTrade.articles;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -24,7 +21,7 @@ public class ArticleBean implements Serializable {
 	private String article_description;
 	private String article_condition;
 	private String article_contact;
-	private List<String> testlist;
+	
 	public ArticleBean() {
 	}
 
@@ -62,7 +59,7 @@ public class ArticleBean implements Serializable {
 	 * @return the article_category
 	 */
 
-	@NotNull(message ="Bitte wählen sie eine Kategorie für ihr Angebot.")
+	@NotNull(message ="Bitte wï¿½hlen sie eine Kategorie fï¿½r ihr Angebot.")
 	public int getArticle_category() {
 		return article_category;
 	}
@@ -173,17 +170,5 @@ public class ArticleBean implements Serializable {
 	public boolean searchArticlesInDB(){
 		return true;
 	}
-
-	public List<String> getTestlist() {
-		testlist = new ArrayList<String>();
-		testlist.add("test");
-		testlist.add("bla");
-		testlist.add("blubber");
-		
-		return testlist;
-	}
-
-	public void setTestlist(List<String> testlist) {
-		this.testlist = testlist;
-	}
+	
 }
