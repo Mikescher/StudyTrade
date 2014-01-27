@@ -41,9 +41,9 @@ public class SearchBean implements Serializable {
 
 	public boolean cutString(){
 		/*splits the search string into individual strings */
-		searchString = searchString.replaceAll("[^a-zA-ZÃ¶Ã–Ã¤Ã„Ã¼ÃœÃŸ0-9\\-\\,]", " ");
+		searchString = searchString.replaceAll("[^a-zA-ZäÄöÖüÜß0-9\\-\\,]", " ");
 		/*In der Sucheingabe werden nur Buchstaben, Zahlen, Umlaute und Bindestrich erlaubt */
-		System.out.println("Sonderzeichen gelÃ¶scht: "+searchString);
+		System.out.println("Sonderzeichen gelöscht: "+searchString);
 
 		StringTokenizer tk = new StringTokenizer( searchString );
 		ArrayList<String> arrayList = new ArrayList<String>();
@@ -83,24 +83,26 @@ public class SearchBean implements Serializable {
 			
 			
 		}
+		
 		analyseString(arrayList);
 		return true;
 	}
 	public void analyseString(ArrayList<String> ac){
+		
 		for(String elem : ac){
-			if(elem.matches("[schwarz|weis|grÃ¼n|blau|rot|gelb]+")){
+			if(elem.matches("[schwarz|weis|grün|blau|rot|gelb]+")){
 				/*Liste von Farben ?*/
 				System.out.println(elem +" Eingabe ist eine Farbe");
 			}
-			else if(elem.matches("[a-zA-ZÃ¶Ã–Ã¼ÃœÃ¤Ã„ÃŸ]+")){
+			else if(elem.matches("[a-zA-ZäÄöÖüÜß]+")){
 				System.out.println(elem +" Eingabe besteht nur aus Buchstaben");
 			}
 			else if(elem.matches("[0-9]+,[0-9]+")){
 				System.out.println(elem + " Eingabe ist ein Preis");
 			}
 			
-			else if(elem.matches("[,]+[0-9a-zA-ZÃ¶Ã–Ã¼ÃœÃ¤Ã„ÃŸ]+")){;
-				/*Erstes Zeichen lÃ¶schen ? Was wÃ¤re bei ::ABCD ?*/
+			else if(elem.matches("[,]+[0-9a-zA-ZäÄöÖüÜß]+")){;
+				/*Erstes Zeichen löschen ? Was wäre bei ::ABCD ? */
 				System.out.println(elem + "Tippfehler");
 			}
 			else if(elem.matches("[0-9]*")){
@@ -110,7 +112,7 @@ public class SearchBean implements Serializable {
 				System.out.println(elem + " Eingabe besteht nur aus Zahlen");
 			}
 				}
-			else if(elem.matches("[a-zA-ZÃ¶Ã–Ã¼ÃœÃ¤Ã„ÃŸ]+[0-9|a-zA-Z]+")){;
+			else if(elem.matches("[a-zA-ZäÄöÖüÜß]+[0-9|a-zA-Z]+")){;
 			/*Erstes Zeichen lÃ¶schen ? Was wÃ¤re bei ::ABCD ?*/
 			System.out.println(elem + " ist eine Artikelbezeichnung");
 			}	

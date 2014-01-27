@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
@@ -45,8 +45,19 @@
 				id="newarticle_artikelbez_field"></form:input>
 			<input value="Überprüfen" name="newarticle_check" type="submit"
 				class="standard_content_button">
+				<table>
+		<c:forEach var="us" items="${articleBean.testlist}">
+			<tr>
+				<td>${us}</td>
+
+			</tr>
+		</c:forEach>
+	</table>
 		</form:form>
 		<div class="contentbox_login_message">${infomsg}</div>
+
 	</div>
+	
+
 </body>
 </html>

@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -16,7 +19,7 @@ public class LoginBean {
 	private Statement st = null;
 	private Connection con = null;
 	private ResultSet rs = null;
-	
+
 
 	@NotNull
 	@NotEmpty(message ="Bitte geben sie eine Benutzernamen an")
@@ -45,13 +48,13 @@ public class LoginBean {
 	}
 
 
-	
-	
-	
+
+
+
 	public boolean isInDB() throws IOException  {
-	
-			try{ 
-			
+
+		try{ 
+
 			/* rudimentäre Datenbankabfrage
 			 * im Verzeichnis /eclipse/lib/
 			 * muss der jdbc Driver liegen, den findet ihr unter 
@@ -64,7 +67,7 @@ public class LoginBean {
 			 * und mit den nötigen Rechten ausgestattet werden */
 			String user = "server";
 			String serv_password = "passwort";
-		  
+
 			/*Verbindungsaufbau zur DB, bei mir heißt sie project_one*/
 			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
 
@@ -92,5 +95,33 @@ public class LoginBean {
 			return false;
 
 		}
+
+	}
+
+	public List<User> userlist() throws Exception{
+		Connection con = null;
+		ResultSet rs = null;
+		List<User> result = new ArrayList<User>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String user = "server";
+			String serv_password = "passwort";
+			con = DriverManager.getConnection("jdbc:mysql://localhost/project_one", user, serv_password);
+			st = con.createStatement();
+			String query = "Select * from user_table";
+			/*... und ausführen*/
+			rs = st.executeQuery(query);
+			while(rs.next()){
+				User us = new User();
+				us.setId(rs.getInt(1));
+				us.setUsername(rs.getString(2));
+				us.setPassword(rs.getString(3));
+				result.add(us);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
