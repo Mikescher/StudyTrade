@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+.v-verticallayout-loginpanel {
+	background: green;
+	background-colour: green;
+}
+
+.loginpanel .v-verticallayout-margin {
+	padding-left: 10px;
+	padding-right: 20px;
+	padding-top: 30px;
+	padding-bottom: 40px;
+}

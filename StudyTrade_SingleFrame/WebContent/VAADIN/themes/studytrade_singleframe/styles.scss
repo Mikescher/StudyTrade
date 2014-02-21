@@ -1,0 +1,10 @@
+@import "style.css";
+@import "addons.scss";
+@import "studytrade_singleframe.scss";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in studytrade_singleframe.scss */
+.studytrade_singleframe {
+  @include addons;
+  @include studytrade_singleframe;
+}

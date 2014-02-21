@@ -1,9 +1,0 @@
-TODO 
-
--> Login Daten für Datenbank in externe Datei auslagern
--> Session Closing ?? 
--> Log zusätzlich in externe Dateien schreiben
--> System Handler für Passwortüberprüfung in LoginBean
--> spezielle Fehlermeldungen ausgeben in UserBean (einzelne Felder auf Sinn überprüfen)
--> Anlegen einer Tabelle für die Artikel
--> Artikel in DB eintragen
