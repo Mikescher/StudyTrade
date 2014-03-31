@@ -10,7 +10,7 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
-
+/* test*/
 public class UserRegisterPanel extends Panel {
 	
 	private static final long serialVersionUID = 1L;
